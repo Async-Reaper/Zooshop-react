@@ -12,7 +12,7 @@ const LinksWrapper = styled('div')({
 })
 
 const HeaderApp: FC = () => {
-    const loginStatus: boolean = true
+    const loginStatus: boolean = false
     return (
         <header className="App-header">
             <ContainerApp>

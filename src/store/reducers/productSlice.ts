@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit'
-import { IProduct } from '../../modules/IProduct'
+import { IProduct } from '../../models/IProduct'
 
 interface IProductState {
     products: IProduct[];
