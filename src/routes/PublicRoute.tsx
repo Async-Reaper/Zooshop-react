@@ -8,7 +8,7 @@ import Signup from '../pages/Signup'
 const PublicRoute: FC = () => {
     return (
         <Routes>
-            <Route path='/'>
+            <Route path='/' element={ <InfoCompany/> } >
                 <Route path='/login' element={ <Login/> } />
                 <Route path='/signup' element={ <Signup/> } />
                 <Route path='/company' element={ <InfoCompany/> } />

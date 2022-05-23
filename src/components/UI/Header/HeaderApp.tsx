@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import React, { FC } from 'react'
+import { Link } from 'react-router-dom'
 import ContainerApp from '../Container/Container'
 import PrivateComponents from './PrivateComponents'
 import PublicComponents from './PublicComponents'
@@ -17,8 +18,8 @@ const HeaderApp: FC = () => {
             <ContainerApp>
                 <LinksWrapper>
                     <div>
-                        <a href="">О компании</a>
-                        <a href="">Товары</a>
+                        <Link to='/company'>О компании</Link>
+                        <Link to='/products'>Товары</Link>
                     </div>
                     {loginStatus ? <PrivateComponents/> : <PublicComponents/>}
                 </LinksWrapper>

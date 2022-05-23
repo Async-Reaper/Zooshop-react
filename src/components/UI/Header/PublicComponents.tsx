@@ -1,10 +1,11 @@
 import React, { FC } from 'react'
+import { Link } from 'react-router-dom'
 
 const PublicComponents:FC = () => {
     return (
         <div>
-            <a href="">Войти</a>
-            <a href="">Зарегистрироваться</a>
+            <Link to='/login'>Войти</Link>
+            <Link to='/signup'>Зарегистрироваться</Link>
         </div>
     )
 }
