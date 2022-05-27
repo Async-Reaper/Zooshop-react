@@ -17,6 +17,7 @@ const ProductsList = () => {
             {loading && <h1>Loading</h1>}
             {products && products.map((product) => 
                 <div key={product.id}>
+                    <img src={product.img} alt="" />
                     <div>{product.name}</div>
                     <div>{product.price}</div>
                 </div>
