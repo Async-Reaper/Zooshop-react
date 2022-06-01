@@ -49,7 +49,13 @@ const LoginForm: FC = () => {
                     variant="standard" 
                 />
                 { (password.isDirty && password.isEmpty) && <div>Поле пустое</div>}
-                <Button  type='submit' variant="contained">Войти</Button>
+                {
+                    loading ?
+                    <Button  type='submit' variant="contained">Войти</Button> :
+                    <LoadingButton loading variant="outlined">
+                        Войти
+                    </LoadingButton>
+                }
             </Stack>
         </form>
     )
