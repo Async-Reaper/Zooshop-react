@@ -31,9 +31,12 @@ const loginSlice = createSlice({
             state.loading = false;
             state.error = true;
             state.errorText = action.payload
+        },
+        setLoginStatus(state, action) {
+            state.loginStatus = action.payload
         }
     }
 })
 
 export default loginSlice.reducer;
-export const { loginError, loginFetch, loginSuccess } = loginSlice.actions;
+export const { loginError, loginFetch, loginSuccess, setLoginStatus } = loginSlice.actions;

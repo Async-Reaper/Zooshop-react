@@ -1,14 +1,13 @@
 import React, { FC, useState } from 'react'
-import Stack from '@mui/material/Stack';
 import LoadingButton from '@mui/lab/LoadingButton';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import H1 from '../UI/H1/H1';
 import { IUserLogin } from '../../models/IUserLogin';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useTypedDispatch } from '../../hooks/useTypedDispatch';
 import { LoginService } from '../../services/LoginService';
 import { useInput } from '../../hooks/useInput';
+import { Button, Stack, TextField } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm: FC = () => {
     const login = useInput('', {isEmpty: true})
@@ -16,6 +15,7 @@ const LoginForm: FC = () => {
 
     const { loading, error, errorText, loginStatus } = useTypedSelector(state => state.login)
     const dispatch = useTypedDispatch()
+    const navigate = useNavigate()
 
     const loginData: IUserLogin = {
         name: login.value,
@@ -27,15 +27,18 @@ const LoginForm: FC = () => {
         login.onBlur()
         password.onBlur()
 
-        if (!login.isDirty && !login.isEmpty && !password.isDirty && !password.isEmpty) {
+        if (!login.isEmpty && !password.isEmpty) {
             dispatch(LoginService(loginData))
-        } 
-    }
+        }
+    } 
+
+    loginStatus && navigate('/')
+
     return (
-        <form onSubmit={fetchLogin}>
+        <form method='GET' onSubmit={(e) => fetchLogin(e)}>
             <Stack spacing={2}>
                 <H1>Авторизация</H1>
-                <TextField 
+                <TextField
                     disabled={loading}
                     value={login.value}
                     onChange={login.onChange}
@@ -56,7 +59,7 @@ const LoginForm: FC = () => {
                     <LoadingButton loading variant="outlined">
                         Войти
                     </LoadingButton> :
-                    <Button  type='submit' variant="contained">Войти</Button>
+                    <Button type='submit' variant="contained">Войти</Button>
                 }
                 {
                     (error) && <div>{errorText}</div>

@@ -1,0 +1,33 @@
+.ProductItemWrapper {
+    max-width: 250px;
+    background: #3f51b5;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 0 10px;
+}
+
+.ProductItemWrapper img {
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
+
+.ProductNameWrapper {
+    color: #f5f5f5;
+    font-size: 17px;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+
+.ProductPriceWrapper {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.ProductPriceWrapper p {
+    background: #9fa8da;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 17px;
+    box-shadow: 0px 4px 10px;
+}

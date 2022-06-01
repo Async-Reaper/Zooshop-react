@@ -10,7 +10,7 @@ const PublicRoute: FC = () => {
         <Routes>
             <Route path='/login' element={ <Login/> } />
             <Route path='/signup' element={ <Signup/> } />
-            <Route path='/company' element={ <InfoCompany/> } />
+            <Route path='/' element={ <InfoCompany/> } />
             <Route path='/products' element={ <Products/> } />
             <Route path='*' element={ <InfoCompany/> } />
         </Routes>
