@@ -13,6 +13,7 @@ export const LoginService = (data: IUserLogin) => {
                 if (user.name === data.name && user.password === data.password) {
                     dispatch(loginSuccess())
                     localStorage.setItem('userId', JSON.stringify(user.id))
+                    localStorage.setItem('userName', JSON.stringify(user.name))
                 } else {
                     dispatch(loginError('Неправильный логин или пароль'))
                 }

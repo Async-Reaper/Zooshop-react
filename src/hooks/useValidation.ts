@@ -3,7 +3,8 @@ import { useEffect, useState } from "react"
 export const useValidation = (value: string, validations: any) => {
     const [isEmpty, setIsEmpty] = useState(true);
     const [minLength, setMinLength] = useState(true);
-    
+    const [passwordValid, setPasswordValid] = useState(true)
+    const [nameValid, setNameValid] = useState(true)
 
     useEffect(() => {
         for (const validation in validations) {
@@ -13,12 +14,17 @@ export const useValidation = (value: string, validations: any) => {
                 break;
                 case 'isEmpty' :
                     value ? setIsEmpty(false) : setIsEmpty(true)
+                break;                
             }
         }
-    }, [isEmpty, minLength])
+    }, [value])
+
+
 
     return {
         isEmpty,
-        minLength
+        minLength,
+        passwordValid,
+        nameValid
     }
 }

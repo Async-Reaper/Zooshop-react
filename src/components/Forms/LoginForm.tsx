@@ -10,8 +10,8 @@ import { LoginService } from '../../services/LoginService';
 import { useInput } from '../../hooks/useInput';
 
 const LoginForm: FC = () => {
-    const login = useInput('')
-    const password = useInput('')
+    const login = useInput('', {isEmpty: true})
+    const password = useInput('', {isEmpty: true})
 
     const { loading } = useTypedSelector(state => state.login)
     const dispatch = useTypedDispatch()
@@ -23,26 +23,32 @@ const LoginForm: FC = () => {
 
     const fetchLogin = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        login.onClick()
-        password.onClick()
-        // dispatch(LoginService(loginData))
+        login.onBlur()
+        password.onBlur()
+
+        if (!login.isDirty && !login.isEmpty && !password.isDirty && !password.isEmpty) {
+            dispatch(LoginService(loginData))
+        } 
     }
     return (
         <form onSubmit={fetchLogin}>
             <Stack spacing={2}>
                 <H1>Авторизация</H1>
                 <TextField 
-                    value={login}
-
+                    disabled={loading}
+                    value={login.value}
+                    onChange={login.onChange}
                     label="Логин" 
                     variant="standard" 
                 />
+                { (login.isDirty && login.isEmpty) && <div>Поле пустое</div>}
                 <TextField 
-                    value={password}
-
+                    disabled={loading}
+                    onChange={password.onChange}
                     label="Пароль" 
                     variant="standard" 
                 />
+                { (password.isDirty && password.isEmpty) && <div>Поле пустое</div>}
                 <Button  type='submit' variant="contained">Войти</Button>
             </Stack>
         </form>
