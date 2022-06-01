@@ -14,7 +14,7 @@ const LoginForm: FC = () => {
     const login = useInput('', {isEmpty: true})
     const password = useInput('', {isEmpty: true})
 
-    const { loading } = useTypedSelector(state => state.login)
+    const { loading, error, errorText, loginStatus } = useTypedSelector(state => state.login)
     const dispatch = useTypedDispatch()
 
     const loginData: IUserLogin = {
@@ -46,6 +46,7 @@ const LoginForm: FC = () => {
                 <TextField 
                     disabled={loading}
                     onChange={password.onChange}
+                    type='password'
                     label="Пароль" 
                     variant="standard" 
                 />
@@ -56,6 +57,9 @@ const LoginForm: FC = () => {
                         Войти
                     </LoadingButton> :
                     <Button  type='submit' variant="contained">Войти</Button>
+                }
+                {
+                    (error) && <div>{errorText}</div>
                 }
             </Stack>
         </form>
