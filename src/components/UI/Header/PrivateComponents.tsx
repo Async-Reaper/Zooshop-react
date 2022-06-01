@@ -1,6 +1,8 @@
 import React, { FC } from 'react'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LogoutIcon from '@mui/icons-material/Logout';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 import styled from '@emotion/styled';
 
 const IconWrapper = styled('div')({
@@ -12,8 +14,16 @@ const IconWrapper = styled('div')({
 const PrivateComponents: FC = () => {
     return (
         <IconWrapper>
-            <ShoppingCartIcon/>
-            <LogoutIcon/>
+            <Tooltip title="Корзина">
+                <IconButton>
+                    <ShoppingCartIcon/>
+                </IconButton>
+            </Tooltip>
+            <Tooltip title="Выйти">
+                <IconButton>
+                    <LogoutIcon/>
+                </IconButton>
+            </Tooltip>
         </IconWrapper>
     )
 }
