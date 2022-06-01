@@ -1,8 +1,11 @@
 import React, { FC } from 'react'
+import LoginForm from '../components/Forms/LoginForm'
 
 const Login: FC = () => {
   return (
-    <div>Login</div>
+    <div>
+      <LoginForm />
+    </div>
   )
 }
 
