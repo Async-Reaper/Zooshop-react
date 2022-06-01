@@ -1,5 +1,5 @@
 export interface IUserLogin {
-    id: number;
+    id?: number;
     name: string;
     password: string;
 }
