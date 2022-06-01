@@ -2,12 +2,14 @@ import { createSlice } from '@reduxjs/toolkit'
 
 interface ILoginSlice {
     loading: boolean;
+    loginStatus: boolean;
     error: boolean;
     errorText: string
 }
 
 const initialState: ILoginSlice = {
     loading: false,
+    loginStatus: false,
     error: false,
     errorText: ''
 }
@@ -23,6 +25,7 @@ const loginSlice = createSlice({
         loginSuccess(state) {
             state.loading = false;
             state.error = false;
+            state.loginStatus = true;
         },
         loginError(state, action) {
             state.loading = false;
