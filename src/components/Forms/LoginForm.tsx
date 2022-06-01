@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react'
 import Stack from '@mui/material/Stack';
+import LoadingButton from '@mui/lab/LoadingButton';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import H1 from '../UI/H1/H1';
@@ -51,10 +52,10 @@ const LoginForm: FC = () => {
                 { (password.isDirty && password.isEmpty) && <div>Поле пустое</div>}
                 {
                     loading ?
-                    <Button  type='submit' variant="contained">Войти</Button> :
                     <LoadingButton loading variant="outlined">
                         Войти
-                    </LoadingButton>
+                    </LoadingButton> :
+                    <Button  type='submit' variant="contained">Войти</Button>
                 }
             </Stack>
         </form>

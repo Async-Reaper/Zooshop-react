@@ -7,7 +7,7 @@ export const LoginService = (data: IUserLogin) => {
     return async (dispatch: AppDispatch) => {
         try {
             dispatch(loginFetch());
-            const response = await axios.get<IUserLogin[]>('https://practice-8c822-default-rtdb.firebaseio.com/users')
+            const response = await axios.get<IUserLogin[]>('https://practice-8c822-default-rtdb.firebaseio.com/users.json')
             const res = response.data;
             res.map(user => {
                 if (user.name === data.name && user.password === data.password) {
