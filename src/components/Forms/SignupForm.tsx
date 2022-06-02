@@ -28,7 +28,7 @@ const SignupForm: FC = () => {
     return (
         <form method='GET' onSubmit={(e) => fetchSignup(e)}>
             <Stack spacing={2}>
-                <H1>Авторизация</H1>
+                <H1>Регистрация</H1>
                 <TextField
                     disabled={loading}
                     value={login.value}

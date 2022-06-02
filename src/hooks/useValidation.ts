@@ -5,6 +5,7 @@ export const useValidation = (value: string, validations: any) => {
     const [minLength, setMinLength] = useState(true);
     const [passwordValid, setPasswordValid] = useState(true)
     const [nameValid, setNameValid] = useState(true)
+    const [formValid, setFormValid] = useState(false)
 
     useEffect(() => {
         for (const validation in validations) {
@@ -14,17 +15,29 @@ export const useValidation = (value: string, validations: any) => {
                 break;
                 case 'isEmpty' :
                     value ? setIsEmpty(false) : setIsEmpty(true)
-                break;                
+                break;      
+                case 'passwordValid':
+                    const reP = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}/
+                    reP.test(String(value)) ? setPasswordValid(false) : setPasswordValid(true)
+                break;
             }
         }
     }, [value])
 
+    useEffect(() => {
+        if (passwordValid || minLength || passwordValid) {
+            setFormValid(false)
+        } else {
+            setFormValid(true)
+        }
 
+    }, [isEmpty, minLength, passwordValid])
 
     return {
         isEmpty,
         minLength,
         passwordValid,
-        nameValid
+        nameValid,
+        formValid
     }
 }
