@@ -11,7 +11,8 @@ const initialState: ILoginSlice = {
     loading: false,
     loginStatus: false,
     error: false,
-    errorText: ''
+    errorText: '',
+
 }
 
 const loginSlice = createSlice({
@@ -34,9 +35,14 @@ const loginSlice = createSlice({
         },
         setLoginStatus(state, action) {
             state.loginStatus = action.payload
+        },
+        logout(state) {
+            state.loginStatus = false
+            localStorage.removeItem('userId')
+            localStorage.removeItem('userName')
         }
     }
 })
 
 export default loginSlice.reducer;
-export const { loginError, loginFetch, loginSuccess, setLoginStatus } = loginSlice.actions;
+export const { loginError, loginFetch, loginSuccess, setLoginStatus, logout } = loginSlice.actions;

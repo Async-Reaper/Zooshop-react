@@ -4,14 +4,17 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import styled from '@emotion/styled';
+import { useTypedDispatch } from '../../../hooks/useTypedDispatch';
+import { logout } from '../../../store/reducers/loginSlice'
 
 const IconWrapper = styled('div')({
     display: 'flex',
     justifyContent: 'space-between',
-    width: 75
+    width: 100
 })
 
 const PrivateComponents: FC = () => {
+    const dispatch = useTypedDispatch()
     return (
         <IconWrapper>
             <Tooltip title="Корзина">
@@ -20,7 +23,7 @@ const PrivateComponents: FC = () => {
                 </IconButton>
             </Tooltip>
             <Tooltip title="Выйти">
-                <IconButton>
+                <IconButton onClick={() => dispatch(logout())}>
                     <LogoutIcon/>
                 </IconButton>
             </Tooltip>
