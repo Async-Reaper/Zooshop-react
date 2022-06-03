@@ -9,15 +9,16 @@ export const LoginService = (data: IUserLogin) => {
             dispatch(loginFetch());
             const response = await axios.get<IUserLogin[]>('https://practice-8c822-default-rtdb.firebaseio.com/users.json')
             const res = response.data;
-            res.map(user => {
-                if (user.name === data.name && user.password === data.password) {
-                    dispatch(loginSuccess())
-                    localStorage.setItem('userId', JSON.stringify(user.id))
-                    localStorage.setItem('userName', JSON.stringify(user.name))
-                } else {
-                    dispatch(loginError('Неправильный логин или пароль'))
-                }
-            })
+            // res.map(user => {
+            //     if (user.name === data.name && user.password === data.password) {
+            //         dispatch(loginSuccess())
+            //         localStorage.setItem('userId', JSON.stringify(user.id))
+            //         localStorage.setItem('userName', JSON.stringify(user.name))
+            //     } else {
+            //         dispatch(loginError('Неправильный логин или пароль'))
+            //     }
+            // })
+            console.log(res)
         } catch (error) {
             dispatch(loginError(error))
         }

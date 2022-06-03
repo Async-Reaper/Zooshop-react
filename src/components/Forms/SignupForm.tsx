@@ -56,7 +56,7 @@ const SignupForm: FC = () => {
                     <LoadingButton loading variant="outlined">
                         Войти
                     </LoadingButton> :
-                    <Button type='submit' variant="contained">Войти</Button>
+                    <Button type='submit' variant="contained">ЗАрегистрироваться</Button>
                 }
                 {
                     (error) && <div>{answerText}</div>
