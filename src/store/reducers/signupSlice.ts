@@ -2,15 +2,15 @@ import { createSlice } from '@reduxjs/toolkit'
 
 interface ISignupSlice { 
     loading: boolean;
-    loginStatus: boolean;
     error: boolean;
+    signupStatus: boolean;
     answerText: string
 }
 
 const initialState: ISignupSlice = {
     loading: false,
-    loginStatus: false,
     error: false,
+    signupStatus: false,
     answerText: '',
 }
 
@@ -25,6 +25,7 @@ const signupSlice = createSlice({
         signupSuccess(state, action) {
             state.loading = false;
             state.error = false;
+            state.signupStatus = true;
             state.answerText = action.payload
         },
         signupError(state, action) {
