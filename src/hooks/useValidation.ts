@@ -4,7 +4,6 @@ export const useValidation = (value: string, validations: any) => {
     const [isEmpty, setIsEmpty] = useState(true);
     const [minLength, setMinLength] = useState(true);
     const [passwordValid, setPasswordValid] = useState(true)
-    const [nameValid, setNameValid] = useState(true)
     const [formValid, setFormValid] = useState(false)
 
     useEffect(() => {
@@ -25,7 +24,7 @@ export const useValidation = (value: string, validations: any) => {
     }, [value])
 
     useEffect(() => {
-        if (passwordValid || minLength || passwordValid) {
+        if (minLength || isEmpty) {
             setFormValid(false)
         } else {
             setFormValid(true)
@@ -37,7 +36,6 @@ export const useValidation = (value: string, validations: any) => {
         isEmpty,
         minLength,
         passwordValid,
-        nameValid,
         formValid
     }
 }

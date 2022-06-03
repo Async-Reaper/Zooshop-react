@@ -11,7 +11,7 @@ function App() {
   const dispatch = useTypedDispatch()
 
   useEffect(() => {
-    localStorage.getItem('loginStatus')  === 'true' ? dispatch(setLoginStatus(true)) : dispatch(setLoginStatus(false))
+    localStorage.getItem('userName') ? dispatch(setLoginStatus(true)) : dispatch(setLoginStatus(false))
   }, [])
 
   return (
