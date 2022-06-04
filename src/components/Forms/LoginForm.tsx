@@ -10,7 +10,7 @@ import { Button, Stack, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 const LoginForm: FC = () => {
-    const login = useInput('', {isEmpty: true})
+    const email = useInput('', {isEmpty: true})
     const password = useInput('', {isEmpty: true})
 
     const { loading, error, errorText, loginStatus } = useTypedSelector(state => state.login)
@@ -18,16 +18,16 @@ const LoginForm: FC = () => {
     const navigate = useNavigate()
 
     const loginData: IUserLogin = {
-        name: login.value,
+        email: email.value,
         password: password.value
     }
 
     const fetchLogin = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        login.onBlur()
+        email.onBlur()
         password.onBlur()
 
-        if (!login.isEmpty && !password.isEmpty) {
+        if (!email.isEmpty && !password.isEmpty) {
             dispatch(LoginService(loginData))
         }
     } 
@@ -40,12 +40,12 @@ const LoginForm: FC = () => {
                 <H1>Авторизация</H1>
                 <TextField
                     disabled={loading}
-                    value={login.value}
-                    onChange={login.onChange}
-                    label="Логин" 
+                    value={email.value}
+                    onChange={email.onChange}
+                    label="Email" 
                     variant="standard" 
                 />
-                { (login.isDirty && login.isEmpty) && <div>Поле пустое</div>}
+                { (email.isDirty && email.isEmpty) && <div>Поле пустое</div>}
                 <TextField 
                     disabled={loading}
                     onChange={password.onChange}
