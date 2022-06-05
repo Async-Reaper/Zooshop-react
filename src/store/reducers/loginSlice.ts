@@ -38,8 +38,8 @@ const loginSlice = createSlice({
         },
         logout(state) {
             state.loginStatus = false
-            localStorage.removeItem('userId')
-            localStorage.removeItem('userName')
+            localStorage.removeItem('uid')
+            localStorage.removeItem('email')
         }
     }
 })

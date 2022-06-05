@@ -1,8 +1,11 @@
 import React, { FC } from 'react'
+import ContainerApp from '../components/UI/Container/Container'
 
 const InfoCompany: FC = () => {
   return (
-    <div>InfoCompany</div>
+    <ContainerApp>
+      InfoCompany
+    </ContainerApp>
   )
 }
 

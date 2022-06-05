@@ -24,8 +24,8 @@ const SignupForm: FC = () => {
         email.onBlur()
         password.onBlur()
         
-        dispatch(SignupService(signupData))
         if (email.formValid && password.formValid && !password.passwordValid) {
+            dispatch(SignupService(signupData))
         } 
     } 
 
