@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import loginSlice from "./reducers/loginSlice";
+import modalWindowsSlice from "./reducers/modalWindowsSlice";
 import productSlice from "./reducers/productSlice";
 import signupSlice from "./reducers/signupSlice";
 
@@ -7,7 +8,8 @@ import signupSlice from "./reducers/signupSlice";
 const rootState = combineReducers({
     product: productSlice,
     login: loginSlice,
-    signup: signupSlice
+    signup: signupSlice,
+    modalWindows: modalWindowsSlice
 })
 
 export const setupStore = () => {
