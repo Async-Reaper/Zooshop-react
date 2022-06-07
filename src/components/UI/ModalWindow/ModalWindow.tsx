@@ -1,29 +1,34 @@
+import styled from '@emotion/styled';
 import { Modal } from '@mui/material'
 import React, { FC } from 'react'
-import { useTypedDispatch } from '../../../hooks/useTypedDispatch'
-import { useTypedSelector } from '../../../hooks/useTypedSelector'
-import { setStateCartModal } from '../../../store/reducers/modalWindowsSlice'
+import cl from './ModalWindow.module.css'
 
 interface IModalWindowProps {
-    children: any
+    children: any;
+    openModal: boolean;
+    closeModal: () => void
 }
 
-const ModalWindow: FC<IModalWindowProps> = ({children}) => {
-    const { cartModal } = useTypedSelector(state => state.modalWindows)
-    const dispatch = useTypedDispatch()
+const ModalStyled = styled(Modal)({
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+})
+
+const ModalWindow: FC<IModalWindowProps> = ({children, openModal, closeModal}) => {
 
     return (
         <div>
-            <Modal
-                open={cartModal}
-                onClose={() => dispatch(setStateCartModal(false))}
+            <ModalStyled
+                open={openModal}
+                onClose={closeModal}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                {
-                    children
-                }
-            </Modal>
+                <div className={cl.ModalContent}>
+                    { children }
+                </div>
+            </ModalStyled>
         </div>
     )
 }
