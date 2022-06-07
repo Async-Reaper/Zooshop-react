@@ -1,5 +1,5 @@
 import { TableCell, TableRow } from '@mui/material'
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 
 interface ICartTableProps {
     name: string;
@@ -8,6 +8,8 @@ interface ICartTableProps {
 }
 
 const CartTableItem: FC<ICartTableProps> = ({name, count, price}) => {
+    const minus = () => count--
+    const add = () => count++
     return (
         <TableRow
             key={name}
@@ -16,7 +18,11 @@ const CartTableItem: FC<ICartTableProps> = ({name, count, price}) => {
             <TableCell component="th" scope="row">
                 {name}
             </TableCell>
-            <TableCell align="right">{count} шт.</TableCell>
+            <TableCell align="right">
+                <button onClick={minus}>-</button>
+                {count} шт.
+                <button onClick={add}>+</button>
+            </TableCell>
             <TableCell align="right">{price} р.</TableCell>
         </TableRow>
     )

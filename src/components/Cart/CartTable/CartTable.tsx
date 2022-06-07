@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useMemo, useState } from 'react'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -20,6 +20,8 @@ const CartTable: FC = () => {
         {id: 5, name: 'Vova', count: 2, price: 5}
     ])
 
+    const totalSum = useMemo(() => getTotalSum(cart), [cart])
+
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -30,7 +32,7 @@ const CartTable: FC = () => {
                     ))}
                     <TableRow>
                         <TableCell colSpan={2}>Итоговая цена</TableCell>
-                        <TableCell align="right">{getTotalSum(cart)} р.</TableCell>
+                        <TableCell align="right">{totalSum} р.</TableCell>
                     </TableRow>
                 </TableBody>
             </Table>
