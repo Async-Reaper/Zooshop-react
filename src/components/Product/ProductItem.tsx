@@ -8,6 +8,7 @@ import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { ICart } from '../../models/ICart';
 import { addToCart } from '../../store/reducers/cartSlice';
 import { setCountProduct } from '../../utils/setCountProduct';
+import DisabledButton from './DisabledButton';
 
 interface IProductItem {
     product: IProduct
@@ -40,14 +41,15 @@ const ProductItem: FC<IProductItem> = ({img, product}) => {
             </div>
             <div className={cl.ProductPriceWrapper}>
                 <p>{product.price} ₽</p>
-            </div>
-            <Button disabled={setCountProduct(JSON.parse(localStorage.getItem('cart') || ''), newProductCart)} variant="contained" onClick={() => addCart()}>
-                { setCountProduct(JSON.parse(localStorage.getItem('cart') || ''), newProductCart) ? 
-                    "Уже в корзине" :
-                    "В корзину" 
-                }
-                <ShoppingCartOutlinedIcon />
-            </Button>
+            </div> 
+            {
+                setCountProduct(JSON.parse(localStorage.getItem('cart') || ''), newProductCart) ? 
+                <DisabledButton /> :
+                <Button variant="contained" onClick={() => addCart()}>
+                    В корзину
+                    <ShoppingCartOutlinedIcon />
+                </Button>
+            }
         </div>
     )
 }
