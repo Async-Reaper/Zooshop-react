@@ -18,7 +18,7 @@ interface IProductItem {
 const ProductItem: FC<IProductItem> = ({img, product}) => {
     const dispatch = useTypedDispatch()
     const { cart } = useTypedSelector(state => state.cart)
-    
+
     const newProductCart: ICart ={
         id: Date.now(),
         count: 1,
@@ -42,7 +42,10 @@ const ProductItem: FC<IProductItem> = ({img, product}) => {
                 <p>{product.price} ₽</p>
             </div>
             <Button disabled={setCountProduct(JSON.parse(localStorage.getItem('cart') || ''), newProductCart)} variant="contained" onClick={() => addCart()}>
-                В корзину
+                { setCountProduct(JSON.parse(localStorage.getItem('cart') || ''), newProductCart) ? 
+                    "Уже в корзине" :
+                    "В корзину" 
+                }
                 <ShoppingCartOutlinedIcon />
             </Button>
         </div>
