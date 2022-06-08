@@ -3,6 +3,7 @@ import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
 import React, { FC } from 'react';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { ICart } from '../../../models/ICart';
 import CartTableHead from './CartTableHead';
 import CartTableItem from './CartTableItem';

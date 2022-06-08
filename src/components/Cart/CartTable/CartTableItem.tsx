@@ -8,8 +8,8 @@ interface ICartTableProps {
 }
 
 const CartTableItem: FC<ICartTableProps> = ({name, count, price}) => {
-    const minus = () => count--
-    const add = () => count++
+    
+    
     return (
         <TableRow
             key={name}
@@ -19,9 +19,9 @@ const CartTableItem: FC<ICartTableProps> = ({name, count, price}) => {
                 {name}
             </TableCell>
             <TableCell align="right">
-                <button onClick={minus}>-</button>
+                <button>-</button>
                 {count} шт.
-                <button onClick={add}>+</button>
+                <button>+</button>
             </TableCell>
             <TableCell align="right">{price} р.</TableCell>
         </TableRow>
