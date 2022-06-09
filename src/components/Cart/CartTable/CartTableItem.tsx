@@ -1,29 +1,30 @@
-import { TableCell, TableRow } from '@mui/material'
-import React, { FC, useState } from 'react'
+import { TableCell, TableRow } from '@mui/material';
+import React, { FC } from 'react';
+import { useTypedDispatch } from '../../../hooks/useTypedDispatch';
+import { ICart } from '../../../models/ICart';
+import { addCount } from '../../../store/reducers/cartSlice';
 
 interface ICartTableProps {
-    name: string;
-    count: number;
-    price: number;
+    product: ICart
 }
 
-const CartTableItem: FC<ICartTableProps> = ({name, count, price}) => {
-    
+const CartTableItem: FC<ICartTableProps> = ({product}) => {
+    const dispatch = useTypedDispatch()
     
     return (
         <TableRow
-            key={name}
+            key={product.name}
             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
         >
             <TableCell component="th" scope="row">
-                {name}
+                {product.name}
             </TableCell>
             <TableCell align="right">
                 <button>-</button>
-                {count} шт.
-                <button>+</button>
+                {product.count} шт.
+                <button onClick={() => dispatch(addCount(product.id))}>+</button>
             </TableCell>
-            <TableCell align="right">{price} р.</TableCell>
+            <TableCell align="right">{product.price} р.</TableCell>
         </TableRow>
     )
 }

@@ -26,7 +26,6 @@ const ProductItem: FC<IProductItem> = ({img, product}) => {
         name: product.name,
         price: product.price
     }
-    localStorage.setItem('cart', JSON.stringify(cart))
 
     const addCart = () => {
         dispatch(addToCart(newProductCart))
