@@ -1,6 +1,7 @@
 import { TableCell, TableRow } from '@mui/material';
 import React, { FC } from 'react';
 import { useTypedDispatch } from '../../../hooks/useTypedDispatch';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { ICart } from '../../../models/ICart';
 import { addCount } from '../../../store/reducers/cartSlice';
 
@@ -10,7 +11,13 @@ interface ICartTableProps {
 
 const CartTableItem: FC<ICartTableProps> = ({product}) => {
     const dispatch = useTypedDispatch()
-    
+    const { cart } = useTypedSelector(state => state.cart)
+
+    const addProduct = () => {
+        dispatch(addCount(product.id))
+        localStorage.setItem('cart', JSON.stringify(cart))
+    }
+
     return (
         <TableRow
             key={product.name}
@@ -22,7 +29,7 @@ const CartTableItem: FC<ICartTableProps> = ({product}) => {
             <TableCell align="right">
                 <button>-</button>
                 {product.count} шт.
-                <button onClick={() => dispatch(addCount(product.id))}>+</button>
+                <button onClick={() => addProduct()}>+</button>
             </TableCell>
             <TableCell align="right">{product.price} р.</TableCell>
         </TableRow>

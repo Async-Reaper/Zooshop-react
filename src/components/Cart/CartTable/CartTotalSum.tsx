@@ -13,8 +13,7 @@ interface ICartTotalSumProps {
 
 const CartTotalSum: FC<ICartTotalSumProps> = ({cart, totalPrice}) => {
     const dispatch = useTypedDispatch()
-    const totalSum = useMemo(() => dispatch(getTotalPrice()), [cart, totalPrice])
-
+    
     return (
         <TableRow>
             <TableCell colSpan={2}>Итоговая цена</TableCell>

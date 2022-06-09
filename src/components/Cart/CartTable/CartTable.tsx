@@ -2,11 +2,11 @@ import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useMemo } from 'react';
 import { useTypedDispatch } from '../../../hooks/useTypedDispatch';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { ICart } from '../../../models/ICart';
-import { showCart } from '../../../store/reducers/cartSlice';
+import { getTotalPrice, showCart } from '../../../store/reducers/cartSlice';
 import CartTableHead from './CartTableHead';
 import CartTableItem from './CartTableItem';
 import CartTotalSum from './CartTotalSum';
@@ -17,7 +17,8 @@ const CartTable: FC = () => {
     
     useEffect(() => {
         dispatch(showCart(JSON.parse(localStorage.getItem('cart') || '')))
-    }, [cart])
+        dispatch(getTotalPrice())
+    }, [totalPrice])
     
     return (
         <TableContainer component={Paper}>
