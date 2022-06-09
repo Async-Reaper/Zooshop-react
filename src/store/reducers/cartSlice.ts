@@ -26,6 +26,9 @@ const cartSlice = createSlice({
         addCount(state, action) {
             state.cart.map(item => item.id === action.payload && item.count++)
         },
+        takeCount(state, action) {
+            state.cart.map(item => item.id === action.payload && item.count--)
+        },
         getTotalPrice(state) {
             state.totalPrice = getTotalSum(state.cart)
         }
@@ -33,4 +36,4 @@ const cartSlice = createSlice({
 })
 
 export default cartSlice.reducer
-export const { addToCart, showCart, addCount, getTotalPrice } = cartSlice.actions
+export const { addToCart, showCart, addCount, takeCount, getTotalPrice } = cartSlice.actions
