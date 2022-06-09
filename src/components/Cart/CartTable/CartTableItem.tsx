@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { useTypedDispatch } from '../../../hooks/useTypedDispatch';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { ICart } from '../../../models/ICart';
-import { addCount } from '../../../store/reducers/cartSlice';
+import { addCount, takeCount } from '../../../store/reducers/cartSlice';
 
 interface ICartTableProps {
     product: ICart
@@ -14,7 +14,12 @@ const CartTableItem: FC<ICartTableProps> = ({product}) => {
     const { cart } = useTypedSelector(state => state.cart)
 
     const addProduct = () => {
+        localStorage.setItem('cart', JSON.stringify(cart))
         dispatch(addCount(product.id))
+    }
+
+    const takeProduct = () => {
+        dispatch(takeCount(product.id))
         localStorage.setItem('cart', JSON.stringify(cart))
     }
 
@@ -27,7 +32,7 @@ const CartTableItem: FC<ICartTableProps> = ({product}) => {
                 {product.name}
             </TableCell>
             <TableCell align="right">
-                <button>-</button>
+                <button onClick={() => takeProduct()}>-</button>
                 {product.count} шт.
                 <button onClick={() => addProduct()}>+</button>
             </TableCell>
