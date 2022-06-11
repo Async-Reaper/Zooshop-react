@@ -18,7 +18,7 @@ const CartTable: FC = () => {
     useEffect(() => {
         dispatch(showCart(JSON.parse(localStorage.getItem('cart') || '')))
     }, [])
-    const totalSpice = useMemo(() => dispatch(getTotalPrice()), [])
+    const totalSpice = useMemo(() => dispatch(getTotalPrice()), [cart])
 
     return (
         <TableContainer component={Paper}>
