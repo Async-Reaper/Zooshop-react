@@ -1,5 +1,5 @@
 import { Button } from '@mui/material'
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { IProduct } from '../../models/IProduct'
 import cl from './ProductItem.module.css'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
@@ -19,7 +19,7 @@ interface IProductItem {
 const ProductItem: FC<IProductItem> = ({img, product}) => {
     const dispatch = useTypedDispatch()
     const { cart } = useTypedSelector(state => state.cart)
-
+    
     const newProductCart: ICart ={
         id: Date.now(),
         count: 1,
@@ -27,11 +27,15 @@ const ProductItem: FC<IProductItem> = ({img, product}) => {
         price: product.price
     }
 
+    
+        if (!localStorage.getItem('cart')) localStorage.setItem('cart', JSON.stringify(cart))
+    
+    
+
     const addCart = () => {
         dispatch(addToCart(newProductCart))
-        localStorage.setItem('cart', JSON.stringify(cart))
     }
-
+    
     return (
         <div className={cl.ProductItemWrapper}>
             <img src={img} alt="" />

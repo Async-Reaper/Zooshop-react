@@ -14,13 +14,13 @@ const CartTableItem: FC<ICartTableProps> = ({product}) => {
     const { cart } = useTypedSelector(state => state.cart)
 
     const addProduct = () => {
-        localStorage.setItem('cart', JSON.stringify(cart))
+        // localStorage.setItem('cart', JSON.stringify(cart))
         dispatch(addCount(product.id))
     }
 
     const takeProduct = () => {
+        // localStorage.setItem('cart', JSON.stringify(cart))
         dispatch(takeCount(product.id))
-        localStorage.setItem('cart', JSON.stringify(cart))
     }
 
     return (

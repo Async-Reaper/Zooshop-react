@@ -14,12 +14,12 @@ import CartTotalSum from './CartTotalSum';
 const CartTable: FC = () => {
     const { cart, totalPrice } = useTypedSelector(state => state.cart)
     const dispatch = useTypedDispatch()
-    
+
     useEffect(() => {
         dispatch(showCart(JSON.parse(localStorage.getItem('cart') || '')))
-        dispatch(getTotalPrice())
-    }, [totalPrice])
-    
+    }, [])
+    const totalSpice = useMemo(() => dispatch(getTotalPrice()), [])
+
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
