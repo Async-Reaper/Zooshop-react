@@ -1,14 +1,14 @@
-import { Button } from '@mui/material'
-import React, { FC, useEffect } from 'react'
-import { IProduct } from '../../models/IProduct'
-import cl from './ProductItem.module.css'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import { Button } from '@mui/material';
+import React, { FC } from 'react';
 import { useTypedDispatch } from '../../hooks/useTypedDispatch';
-import { useTypedSelector } from '../../hooks/useTypedSelector'
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { ICart } from '../../models/ICart';
+import { IProduct } from '../../models/IProduct';
 import { addToCart } from '../../store/reducers/cartSlice';
 import { setCountProduct } from '../../utils/setCountProduct';
 import DisabledButton from './DisabledButton';
+import cl from './ProductItem.module.css';
 
 interface IProductItem {
     product: IProduct
@@ -28,7 +28,7 @@ const ProductItem: FC<IProductItem> = ({img, product}) => {
     }
 
     
-        if (!localStorage.getItem('cart')) localStorage.setItem('cart', JSON.stringify(cart))
+    if (!localStorage.getItem('cart')) localStorage.setItem('cart', JSON.stringify(cart))
     
     
 

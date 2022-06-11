@@ -5,7 +5,6 @@ import TableContainer from '@mui/material/TableContainer';
 import React, { FC, useEffect, useMemo } from 'react';
 import { useTypedDispatch } from '../../../hooks/useTypedDispatch';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
-import { ICart } from '../../../models/ICart';
 import { getTotalPrice, showCart } from '../../../store/reducers/cartSlice';
 import CartTableHead from './CartTableHead';
 import CartTableItem from './CartTableItem';

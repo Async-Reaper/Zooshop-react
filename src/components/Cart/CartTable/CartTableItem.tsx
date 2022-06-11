@@ -1,9 +1,11 @@
-import { TableCell, TableRow } from '@mui/material';
 import React, { FC } from 'react';
+import { IconButton, TableCell, TableRow } from '@mui/material';
 import { useTypedDispatch } from '../../../hooks/useTypedDispatch';
-import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { ICart } from '../../../models/ICart';
 import { addCount, takeCount } from '../../../store/reducers/cartSlice';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import cl from '../Cart.module.css'
 
 interface ICartTableProps {
     product: ICart
@@ -11,15 +13,12 @@ interface ICartTableProps {
 
 const CartTableItem: FC<ICartTableProps> = ({product}) => {
     const dispatch = useTypedDispatch()
-    const { cart } = useTypedSelector(state => state.cart)
 
     const addProduct = () => {
-        // localStorage.setItem('cart', JSON.stringify(cart))
         dispatch(addCount(product.id))
     }
 
     const takeProduct = () => {
-        // localStorage.setItem('cart', JSON.stringify(cart))
         dispatch(takeCount(product.id))
     }
 
@@ -32,9 +31,13 @@ const CartTableItem: FC<ICartTableProps> = ({product}) => {
                 {product.name}
             </TableCell>
             <TableCell align="right">
-                <button onClick={() => takeProduct()}>-</button>
-                {product.count} шт.
-                <button onClick={() => addProduct()}>+</button>
+                <IconButton color="secondary" onClick={() => takeProduct()} aria-label="add an alarm">
+                    <RemoveIcon />
+                </IconButton>
+                <span className={cl.CountText}>{product.count} шт.</span>
+                <IconButton color="primary" onClick={() => addProduct()} aria-label="add an alarm">
+                    <AddIcon />
+                </IconButton>
             </TableCell>
             <TableCell align="right">{product.price} р.</TableCell>
         </TableRow>
