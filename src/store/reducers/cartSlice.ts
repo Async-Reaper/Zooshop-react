@@ -21,9 +21,11 @@ const cartSlice = createSlice({
             state.cart.push(action.payload)
             localStorage.setItem('cart', JSON.stringify(state.cart))
         },
+
         showCart(state, action) {
             state.cart = action.payload
         },
+
         addCount(state, action) {
             state.cart.map(item => {
                 if (item.id === action.payload) {
@@ -31,10 +33,9 @@ const cartSlice = createSlice({
                     item.price = (item.price / (item.count - 1)) + item.price
                 }
             })
-
             localStorage.setItem('cart', JSON.stringify(state.cart))
-
         },
+
         takeCount(state, action) {
             state.cart.map(item => {
                 if (item.id === action.payload) {
@@ -43,13 +44,17 @@ const cartSlice = createSlice({
                 }
             })
             localStorage.setItem('cart', JSON.stringify(state.cart))
-
         },
+
         getTotalPrice(state) {
             state.totalPrice = getTotalSum(state.cart)
+        },
+
+        deleteNull(state) {
+            state.cart.filter(item => item.count !== 0)
         }
     }
 })
 
 export default cartSlice.reducer
-export const { addToCart, showCart, addCount, takeCount, getTotalPrice } = cartSlice.actions
+export const { addToCart, showCart, addCount, takeCount, getTotalPrice, deleteNull } = cartSlice.actions

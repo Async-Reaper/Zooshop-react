@@ -5,7 +5,7 @@ import TableContainer from '@mui/material/TableContainer';
 import React, { FC, useEffect, useMemo } from 'react';
 import { useTypedDispatch } from '../../../hooks/useTypedDispatch';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
-import { getTotalPrice, showCart } from '../../../store/reducers/cartSlice';
+import { deleteNull, getTotalPrice, showCart } from '../../../store/reducers/cartSlice';
 import CartTableHead from './CartTableHead';
 import CartTableItem from './CartTableItem';
 import CartTotalSum from './CartTotalSum';
@@ -16,7 +16,10 @@ const CartTable: FC = () => {
 
     useEffect(() => {
         dispatch(showCart(JSON.parse(localStorage.getItem('cart') || '')))
+        dispatch(deleteNull())
     }, [])
+
+    
     const totalSpice = useMemo(() => dispatch(getTotalPrice()), [cart])
 
     return (
