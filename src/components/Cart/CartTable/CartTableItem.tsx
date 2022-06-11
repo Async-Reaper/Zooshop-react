@@ -11,14 +11,8 @@ interface ICartTableProps {
 
 const CartTableItem: FC<ICartTableProps> = ({product}) => {
     const dispatch = useTypedDispatch()
-
-    const addProduct = () => {
-        dispatch(addCount(product.id))
-    }
-
-    const takeProduct = () => {
-        dispatch(takeCount(product.id))
-    }
+    const addProduct = () => dispatch(addCount(product.id))
+    const takeProduct = () => dispatch(takeCount(product.id))
 
     return (
         <TableRow
