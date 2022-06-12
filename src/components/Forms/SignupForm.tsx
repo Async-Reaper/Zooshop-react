@@ -6,11 +6,13 @@ import { useTypedDispatch } from '../../hooks/useTypedDispatch'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { IUserLogin } from '../../models/IUserLogin'
 import { SignupService } from '../../services/SingupService'
+import Error from '../UI/Error/Error'
 import H1 from '../UI/H1/H1'
 
 const SignupForm: FC = () => {
-    const email = useInput('', {isEmpty: true, minLength: 5, formValid: false})
+    const email = useInput('', {isEmpty: true, minLength: 5, formValid: false, emailValid: true})
     const password = useInput('', {isEmpty: true, minLength: 8, passwordValid: true, formValid: false})
+    const repeatPassword = useInput('', {isEmpty: true, minLength: 8, passwordValid: true})
     const dispatch = useTypedDispatch()
     const { loading, error, answerText, signupStatus } = useTypedSelector(state => state.signup)
 
@@ -23,8 +25,9 @@ const SignupForm: FC = () => {
         e.preventDefault()
         email.onBlur()
         password.onBlur()
-        
-        if (email.formValid && password.formValid && !password.passwordValid) {
+        repeatPassword.onBlur()
+
+        if (email.formValid && password.formValid && !password.passwordValid && password.value !== repeatPassword.value) {
             dispatch(SignupService(signupData))
         } 
     } 
@@ -37,11 +40,12 @@ const SignupForm: FC = () => {
                     disabled={loading}
                     value={email.value}
                     onChange={email.onChange}
-                    label="Логин" 
+                    label="Email" 
                     variant="standard" 
                 />
-                { (email.isDirty && email.isEmpty) && <div>Поле пустое</div>}
-                { (email.isDirty && email.minLength) && <div>Должно быть больше 5 символов</div>}
+                { (email.isDirty && email.emailValid) && <Error>Email не валиден</Error>}
+                { (email.isDirty && email.isEmpty) && <Error>Поле пустое</Error>}
+                { (email.isDirty && email.minLength) && <Error>Должно быть больше 5 символов</Error>}
                 <TextField 
                     disabled={loading}
                     onChange={password.onChange}
@@ -49,9 +53,18 @@ const SignupForm: FC = () => {
                     label="Пароль" 
                     variant="standard" 
                 />
-                { (password.isDirty && password.isEmpty) && <div>Поле пустое</div>}
-                { (password.isDirty && password.minLength) && <div>Должно быть больше 8 символов</div>}
-                { (password.isDirty && password.passwordValid) && <div>Пароль должен состоять из: латинских заглавных и строчных букв и цифр</div>}
+                { (password.isDirty && password.isEmpty) && <Error>Поле пустое</Error>}
+                { (password.isDirty && password.minLength) && <Error>Должно быть больше 8 символов</Error>}
+                { (password.isDirty && password.passwordValid) && <Error>Пароль должен состоять из: латинских заглавных и строчных букв и цифр</Error>}
+                <TextField 
+                    disabled={loading}
+                    onChange={repeatPassword.onChange}
+                    type='password'
+                    label="Повторите пароль" 
+                    variant="standard" 
+                />
+                { (repeatPassword.isDirty && repeatPassword.isEmpty) && <Error>Поле пустое</Error>}
+                { (password.value !== repeatPassword.value) && <Error>Пароли не совпадают</Error>}
                 {
                     loading ?
                     <LoadingButton loading variant="outlined">

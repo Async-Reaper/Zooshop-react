@@ -19,7 +19,7 @@ interface IProductItem {
 const ProductItem: FC<IProductItem> = ({img, product}) => {
     const dispatch = useTypedDispatch()
     const { cart } = useTypedSelector(state => state.cart)
-    
+    const { loginStatus } = useTypedSelector(state => state.login)
     const newProductCart: ICart ={
         id: Date.now(),
         count: 1,
@@ -48,7 +48,7 @@ const ProductItem: FC<IProductItem> = ({img, product}) => {
             {
                 setCountProduct(JSON.parse(localStorage.getItem('cart') || ''), newProductCart) ? 
                 <DisabledButton /> :
-                <Button variant="contained" onClick={() => addCart()}>
+                <Button disabled={!loginStatus} variant="contained" onClick={() => addCart()}>
                     В корзину
                     <ShoppingCartOutlinedIcon />
                 </Button>

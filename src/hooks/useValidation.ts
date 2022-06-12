@@ -5,7 +5,7 @@ export const useValidation = (value: string, validations: any) => {
     const [minLength, setMinLength] = useState(true);
     const [passwordValid, setPasswordValid] = useState(true)
     const [formValid, setFormValid] = useState(false)
-
+    const [emailValid, setEmailValid] = useState(true)
     useEffect(() => {
         for (const validation in validations) {
             switch(validation) {
@@ -19,6 +19,10 @@ export const useValidation = (value: string, validations: any) => {
                     const reP = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}/
                     reP.test(String(value)) ? setPasswordValid(false) : setPasswordValid(true)
                 break;
+                case 'emailValid' :
+                    const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
+                    re.test(String(value).toLowerCase()) ? setEmailValid(false) : setEmailValid(true)
+                break
             }
         }
     }, [value])
@@ -36,6 +40,7 @@ export const useValidation = (value: string, validations: any) => {
         isEmpty,
         minLength,
         passwordValid,
-        formValid
+        formValid,
+        emailValid
     }
 }

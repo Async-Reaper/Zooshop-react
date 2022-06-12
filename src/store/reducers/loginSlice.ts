@@ -40,6 +40,7 @@ const loginSlice = createSlice({
             state.loginStatus = false
             localStorage.removeItem('uid')
             localStorage.removeItem('email')
+            localStorage.removeItem('email')
         }
     }
 })
