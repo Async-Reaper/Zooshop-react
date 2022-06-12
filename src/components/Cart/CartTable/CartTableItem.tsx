@@ -4,6 +4,7 @@ import { useTypedDispatch } from '../../../hooks/useTypedDispatch';
 import { ICart } from '../../../models/ICart';
 import { addCount, deleteInCart, takeCount } from '../../../store/reducers/cartSlice';
 import CartTableCount from './CartTableCount';
+import CartDeleteItem from './CartDeleteItem';
 
 interface ICartTableProps {
     product: ICart
@@ -20,6 +21,7 @@ const CartTableItem: FC<ICartTableProps> = ({product}) => {
             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
         >
             <TableCell component="th" scope="row">
+                <CartDeleteItem id={product.id}/>
                 {product.name}
             </TableCell>
             <TableCell align="right">
