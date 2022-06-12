@@ -1,8 +1,8 @@
+import React, { FC, useEffect, useMemo } from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
-import React, { FC, useEffect, useMemo } from 'react';
 import { useTypedDispatch } from '../../../hooks/useTypedDispatch';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { getTotalPrice, showCart } from '../../../store/reducers/cartSlice';
