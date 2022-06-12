@@ -1,16 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ICart } from "../../models/ICart";
+import { getTotalCountProduct } from "../../utils/getTotalCount";
 import { getTotalSum } from "../../utils/getTotalSum";
 
 
 interface ICartSlice {
     cart: ICart[];
     totalPrice: number;
+    totalCountProduct: number
 }
 
 const initialState: ICartSlice = {
     cart: [],
-    totalPrice: 0
+    totalPrice: 0,
+    totalCountProduct: 0
 }
 
 const cartSlice = createSlice({
@@ -53,9 +56,13 @@ const cartSlice = createSlice({
         deleteInCart(state, action) {
             state.cart = state.cart.filter(item => item.id !== action.payload)
             localStorage.setItem('cart', JSON.stringify(state.cart))
+        },
+
+        getTotalCount(state, action) {
+            state.totalCountProduct = getTotalCountProduct(action.payload)
         }
     }
 })
 
 export default cartSlice.reducer
-export const { addToCart, showCart, addCount, takeCount, getTotalPrice, deleteInCart } = cartSlice.actions
+export const { addToCart, showCart, addCount, takeCount, getTotalPrice, deleteInCart, getTotalCount } = cartSlice.actions
