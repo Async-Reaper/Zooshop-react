@@ -17,7 +17,7 @@ interface ICartTableCountProps {
 const CartTableCount: FC<ICartTableCountProps> = ({count, takeProduct, addProduct}) => {
     return (
     <>
-        <IconButton disabled={count === 1} color="secondary" onClick={takeProduct} aria-label="add an alarm">
+        <IconButton color="secondary" onClick={takeProduct} aria-label="add an alarm">
             <RemoveIcon />
         </IconButton>
         <CountText>{count} шт.</CountText>

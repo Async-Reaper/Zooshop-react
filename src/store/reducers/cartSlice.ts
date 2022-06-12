@@ -50,11 +50,12 @@ const cartSlice = createSlice({
             state.totalPrice = getTotalSum(state.cart)
         },
 
-        deleteNull(state) {
-            state.cart.filter(item => item.count !== 0)
+        deleteInCart(state, action) {
+            state.cart = state.cart.filter(item => item.id !== action.payload)
+            localStorage.setItem('cart', JSON.stringify(state.cart))
         }
     }
 })
 
 export default cartSlice.reducer
-export const { addToCart, showCart, addCount, takeCount, getTotalPrice, deleteNull } = cartSlice.actions
+export const { addToCart, showCart, addCount, takeCount, getTotalPrice, deleteInCart } = cartSlice.actions

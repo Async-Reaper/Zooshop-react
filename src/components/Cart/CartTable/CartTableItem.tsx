@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { IconButton, TableCell, TableRow } from '@mui/material';
 import { useTypedDispatch } from '../../../hooks/useTypedDispatch';
 import { ICart } from '../../../models/ICart';
-import { addCount, takeCount } from '../../../store/reducers/cartSlice';
+import { addCount, deleteInCart, takeCount } from '../../../store/reducers/cartSlice';
 import CartTableCount from './CartTableCount';
 
 interface ICartTableProps {
@@ -12,7 +12,7 @@ interface ICartTableProps {
 const CartTableItem: FC<ICartTableProps> = ({product}) => {
     const dispatch = useTypedDispatch()
     const addProduct = () => dispatch(addCount(product.id))
-    const takeProduct = () => dispatch(takeCount(product.id))
+    const takeProduct = () => product.count === 1 ? dispatch(deleteInCart(product.id)) : dispatch(takeCount(product.id))
 
     return (
         <TableRow
