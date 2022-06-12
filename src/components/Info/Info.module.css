@@ -1,0 +1,25 @@
+.InfoWrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.InfoTitle {
+    color: #212121;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.InfoCompanyWrapper {
+    color: #e8eaf6;
+    padding: 20px 40px;
+    background: #5c6bc0;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.InfoCompanyText {
+    padding: 15px 10px;
+}
