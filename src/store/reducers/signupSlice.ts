@@ -4,7 +4,8 @@ interface ISignupSlice {
     loading: boolean;
     error: boolean;
     signupStatus: boolean;
-    answerText: string
+    answerText: string;
+    popupStatus: boolean
 }
 
 const initialState: ISignupSlice = {
@@ -12,6 +13,7 @@ const initialState: ISignupSlice = {
     error: false,
     signupStatus: false,
     answerText: '',
+    popupStatus: false
 }
 
 const signupSlice = createSlice({
@@ -26,6 +28,7 @@ const signupSlice = createSlice({
             state.loading = false;
             state.error = false;
             state.signupStatus = true;
+            state.popupStatus = true
             state.answerText = action.payload
         },
         signupError(state, action) {
@@ -33,8 +36,11 @@ const signupSlice = createSlice({
             state.error = true;
             state.answerText = action.payload
         },
+        closePopup(state) {
+            state.popupStatus = false
+        }
     }
 })
 
 export default signupSlice.reducer
-export const { signupFetch, signupSuccess, signupError } = signupSlice.actions
+export const { signupFetch, signupSuccess, signupError, closePopup } = signupSlice.actions

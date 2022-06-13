@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { IUserLogin } from "../models/IUserLogin";
-import { signupFetch, signupSuccess } from "../store/reducers/signupSlice";
+import { signupFetch, signupSuccess, signupError } from "../store/reducers/signupSlice";
 import { AppDispatch } from "../store/store";
 
 export const SignupService = (data: IUserLogin) => {
@@ -14,6 +14,7 @@ export const SignupService = (data: IUserLogin) => {
                     localStorage.setItem('uid', userCredential.user.uid)
                     dispatch(signupSuccess('Регистрация прошла успешно'))
                 }).catch((error) => {
+                    dispatch(signupError(error.message))
                     console.log(error.message)
                 })
         } catch (error) {

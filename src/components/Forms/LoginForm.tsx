@@ -7,6 +7,7 @@ import { useTypedDispatch } from '../../hooks/useTypedDispatch';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { IUserLogin } from '../../models/IUserLogin';
 import { LoginService } from '../../services/LoginService';
+import Error from '../UI/Error/Error';
 import H1 from '../UI/H1/H1';
 
 const LoginForm: FC = () => {
@@ -45,7 +46,7 @@ const LoginForm: FC = () => {
                     label="Email" 
                     variant="standard" 
                 />
-                { (email.isDirty && email.isEmpty) && <div>Поле пустое</div>}
+                { (email.isDirty && email.isEmpty) && <Error>Поле пустое</Error>}
                 <TextField 
                     disabled={loading}
                     onChange={password.onChange}
@@ -53,7 +54,7 @@ const LoginForm: FC = () => {
                     label="Пароль" 
                     variant="standard" 
                 />
-                { (password.isDirty && password.isEmpty) && <div>Поле пустое</div>}
+                { (password.isDirty && password.isEmpty) && <Error>Поле пустое</Error>}
                 {
                     loading ?
                     <LoadingButton loading variant="outlined">

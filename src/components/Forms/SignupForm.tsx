@@ -8,6 +8,7 @@ import { IUserLogin } from '../../models/IUserLogin'
 import { SignupService } from '../../services/SingupService'
 import Error from '../UI/Error/Error'
 import H1 from '../UI/H1/H1'
+import Popup from '../UI/Popup/Popup'
 
 const SignupForm: FC = () => {
     const email = useInput('', {isEmpty: true, minLength: 5, formValid: false, emailValid: true})
@@ -27,7 +28,7 @@ const SignupForm: FC = () => {
         password.onBlur()
         repeatPassword.onBlur()
 
-        if (email.formValid && password.formValid && !password.passwordValid && password.value !== repeatPassword.value) {
+        if (email.formValid && password.formValid && !password.passwordValid && !email.emailValid && password.value === repeatPassword.value) {
             dispatch(SignupService(signupData))
         } 
     } 
@@ -35,6 +36,9 @@ const SignupForm: FC = () => {
     return (
         <form method='GET' onSubmit={(e) => fetchSignup(e)}>
             <Stack spacing={2}>
+                {
+                    (signupStatus) && <Popup>{answerText}</Popup>
+                }
                 <H1>Регистрация</H1>
                 <TextField
                     disabled={loading}
@@ -74,9 +78,6 @@ const SignupForm: FC = () => {
                 }
                 {
                     (error) && <div>{answerText}</div>
-                }
-                {
-                    (signupStatus) && <div>{answerText}</div>
                 }
             </Stack>
         </form>
