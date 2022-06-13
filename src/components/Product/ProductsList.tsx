@@ -13,6 +13,7 @@ const ProductWrapper = styled('div')({
     gridTemplateRows: '1fr',
     gridAutoflow: 'row',
     gridGap: '20px',
+    marginBottom: 20
 })
 
 const ProductsList = () => {
