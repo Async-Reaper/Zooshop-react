@@ -4,6 +4,7 @@ import { useTypedDispatch } from '../../hooks/useTypedDispatch'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { setStateCartModal } from '../../store/reducers/modalWindowsSlice'
 import ModalWindow from '../UI/ModalWindow/ModalWindow'
+import ButtonsCart from './ButtonsCart'
 import CartTable from './CartTable/CartTable'
 const Cart: FC = () => {
     const { cartModal } = useTypedSelector(state => state.modalWindows)
@@ -14,7 +15,7 @@ const Cart: FC = () => {
         <ModalWindow openModal={cartModal} closeModal={() => dispatch(setStateCartModal(false))} > 
             <div>
                 <CartTable />
-                <Button variant='outlined'>Оформить заказ</Button>
+                <ButtonsCart />
             </div>
         </ModalWindow>
     )
