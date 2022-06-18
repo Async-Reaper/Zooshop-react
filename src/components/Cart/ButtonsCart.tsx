@@ -1,7 +1,9 @@
 import styled from '@emotion/styled'
 import { Button } from '@mui/material'
-import React, { FC } from 'react'
+import React, { FC, useMemo, useState } from 'react'
 import { useTypedDispatch } from '../../hooks/useTypedDispatch'
+import { useTypedSelector } from '../../hooks/useTypedSelector'
+import { ICart } from '../../models/ICart'
 import { clearCart } from '../../store/reducers/cartSlice'
 
 const ButtonsWrapper = styled('div')({
@@ -10,13 +12,25 @@ const ButtonsWrapper = styled('div')({
     margin: '15px 0'
 })
 
-const ButtonsCart: FC = () => {
+interface IButtonsCartProps {
+    cart: ICart[]
+}
+const ButtonsCart: FC<IButtonsCartProps> = ({cart}) => {
     const dispatch = useTypedDispatch()
+    const [cartStatus, setCartStatus] = useState<boolean>(false)
 
+    useMemo(() => {
+    
+        if (cart.length === 0) {
+            setCartStatus(true)
+        }
+    
+    }, [cart])
+    
     return (
         <ButtonsWrapper>
-            <Button variant='outlined'>Оформить заказ</Button>
-            <Button variant='outlined' onClick={() => dispatch(clearCart())} >Очистить корзину</Button>
+            <Button disabled={ cartStatus} variant='outlined'>Оформить заказ</Button>
+            <Button disabled={ cartStatus} variant='outlined' onClick={() => dispatch(clearCart())} >Очистить корзину</Button>
         </ButtonsWrapper>
     )
 }
