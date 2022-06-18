@@ -1,6 +1,8 @@
 import styled from '@emotion/styled'
 import { Button } from '@mui/material'
 import React, { FC } from 'react'
+import { useTypedDispatch } from '../../hooks/useTypedDispatch'
+import { clearCart } from '../../store/reducers/cartSlice'
 
 const ButtonsWrapper = styled('div')({
     display: 'flex',
@@ -9,10 +11,12 @@ const ButtonsWrapper = styled('div')({
 })
 
 const ButtonsCart: FC = () => {
+    const dispatch = useTypedDispatch()
+
     return (
         <ButtonsWrapper>
             <Button variant='outlined'>Оформить заказ</Button>
-            <Button variant='outlined'>Очистить корзину</Button>
+            <Button variant='outlined' onClick={() => dispatch(clearCart())} >Очистить корзину</Button>
         </ButtonsWrapper>
     )
 }

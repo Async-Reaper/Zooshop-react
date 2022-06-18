@@ -60,9 +60,14 @@ const cartSlice = createSlice({
 
         getTotalCount(state, action) {
             state.totalCountProduct = getTotalCountProduct(action.payload)
+        },
+
+        clearCart(state) {
+            state.cart = []
+            localStorage.setItem('cart', JSON.stringify(state.cart))
         }
     }
 })
 
 export default cartSlice.reducer
-export const { addToCart, showCart, addCount, takeCount, getTotalPrice, deleteInCart, getTotalCount } = cartSlice.actions
+export const { addToCart, showCart, addCount, takeCount, getTotalPrice, deleteInCart, getTotalCount, clearCart } = cartSlice.actions
