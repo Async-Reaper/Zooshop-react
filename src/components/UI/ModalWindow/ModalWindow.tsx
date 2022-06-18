@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Modal } from '@mui/material'
 import React, { FC } from 'react'
-import cl from './ModalWindow.module.css'
+import cl from './ModalWindow.module.scss'
 
 interface IModalWindowProps {
     children: any;

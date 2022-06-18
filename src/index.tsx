@@ -5,6 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { setupStore } from './store/store';
 import './firebase'
+import './index.css'
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

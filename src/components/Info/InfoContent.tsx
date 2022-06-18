@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import cl from './Info.module.css'
+import cl from './Info.module.scss'
 
 export const InfoContent: FC = () => {
     return (

@@ -8,7 +8,7 @@ import { IProduct } from '../../models/IProduct';
 import { addToCart } from '../../store/reducers/cartSlice';
 import { setCountProduct } from '../../utils/setCountProduct';
 import DisabledButton from './DisabledButton';
-import cl from './ProductItem.module.css';
+import cl from './ProductItem.module.scss';
 
 interface IProductItem {
     product: IProduct
