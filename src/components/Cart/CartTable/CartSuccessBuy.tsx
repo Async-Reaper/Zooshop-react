@@ -10,7 +10,8 @@ const CartSuccessBuy: FC = () => {
     return (
         <ModalWindow openModal={cartSuccessBuy} closeModal={() => dispatch(setStateCartSuccessBuy(false))} >
             <div>
-                Покупка прошла успешно
+                <p>Заказ оформлен успешно.</p>
+                <p>Забирать заказ и оплачивать по адресу: г. Междуреченск, просп. Шахтёров, д. 37</p>
             </div>
         </ModalWindow>
     )
