@@ -1,4 +1,3 @@
-import { Button } from '@mui/material'
 import React, { FC, memo } from 'react'
 import { useTypedDispatch } from '../../hooks/useTypedDispatch'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
