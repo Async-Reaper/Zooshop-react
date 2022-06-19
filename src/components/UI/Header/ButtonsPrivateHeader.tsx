@@ -14,9 +14,12 @@ const ButtonsPrivateHeader: FC = () => {
     const dispatch = useTypedDispatch()
     const { cart, totalCountProduct } = useTypedSelector(state => state.cart)
 
+    if (!localStorage.getItem('cart')) localStorage.setItem('cart', JSON.stringify(cart))
+
     useEffect(() => {
         dispatch(getTotalCount(JSON.parse(localStorage.getItem('cart') || '')))
     }, [cart])
+    
     return (
         <>
             <Tooltip title="Корзина">
