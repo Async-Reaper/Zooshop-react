@@ -5,6 +5,7 @@ import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { setStateCartModal } from '../../store/reducers/modalWindowsSlice'
 import ModalWindow from '../UI/ModalWindow/ModalWindow'
 import ButtonsCart from './ButtonsCart'
+import CartSuccessBuy from './CartTable/CartSuccessBuy'
 import CartTable from './CartTable/CartTable'
 
 const MemoModalWindow = memo(ModalWindow)
@@ -19,6 +20,7 @@ const Cart: FC = () => {
             <div>
                 <CartTable />
                 <MemoButtonsCart cart={cart} />
+                <CartSuccessBuy />
             </div>
         </MemoModalWindow>
     )

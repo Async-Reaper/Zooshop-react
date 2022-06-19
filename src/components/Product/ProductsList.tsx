@@ -6,6 +6,7 @@ import ContainerApp from '../UI/Container/Container'
 import img from '../../img/Игрушка для кошек.jpg'
 import styled from '@emotion/styled'
 import ProductItem from './ProductItem'
+import { Skeleton } from '@mui/material'
 
 const ProductWrapper = styled('div')({
     display: 'grid',
@@ -26,7 +27,7 @@ const ProductsList = () => {
 
     return (
         <ContainerApp>
-            {loading && <h1>Loading</h1>}
+            {loading &&  <Skeleton variant="rectangular" width={250} height={416} />}
             <ProductWrapper>
                 {products && products.map((product) => 
                     <ProductItem key={product.id} img={img} product={product} />
