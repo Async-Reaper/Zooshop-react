@@ -13,7 +13,7 @@ const LinksWrapper = styled('div')({
 })
 
 const PublicWrapper = styled('div')({
-    '@media (max-width: 400px)': {
+    '@media (max-width: 460px)': {
         display: 'grid',
     }
 })
