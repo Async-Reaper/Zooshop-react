@@ -14,7 +14,13 @@ const ProductWrapper = styled('div')({
     gridTemplateRows: '1fr',
     gridAutoflow: 'row',
     gridGap: '20px',
-    marginBottom: 20
+    marginBottom: 20,
+    '@media (max-width: 840px)': {
+        gridTemplateColumns: '1fr 1fr'
+    },
+    '@media (max-width: 565px)': {
+        gridTemplateColumns: '1fr'
+    }
 })
 
 const ProductsList = () => {

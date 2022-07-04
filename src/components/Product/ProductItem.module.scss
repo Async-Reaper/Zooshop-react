@@ -4,11 +4,12 @@
     border-radius: 20px;
     padding: 24px;
     box-shadow: 0 0 10px;
-}
+    justify-self: center;
 
-.ProductItemWrapper img {
-    border-radius: 20px;
-    margin-bottom: 15px;
+    img {
+        border-radius: 20px;
+        margin-bottom: 15px;
+    }
 }
 
 .ProductNameWrapper {
@@ -21,12 +22,11 @@
 .ProductPriceWrapper {
     display: flex;
     margin-bottom: 15px;
-}
-
-.ProductPriceWrapper p {
-    background: #9fa8da;
-    padding: 5px 15px;
-    border-radius: 10px;
-    font-weight: 800;
-    font-size: 17px
+    p {
+        background: #9fa8da;
+        padding: 5px 15px;
+        border-radius: 10px;
+        font-weight: 800;
+        font-size: 17px
+    }
 }

@@ -6,7 +6,11 @@ import Cart from '../../Cart/Cart';
 const IconWrapper = styled('div')({
     display: 'flex',
     justifyContent: 'space-between',
-    width: 100
+    width: 100,
+    '@media (max-width: 400px)': {
+        display: 'grid',
+        textAlign: 'right',
+    }
 })
 
 const PrivateComponents: FC = () => {

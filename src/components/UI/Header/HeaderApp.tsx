@@ -12,6 +12,12 @@ const LinksWrapper = styled('div')({
     alignItems: 'center'
 })
 
+const PublicWrapper = styled('div')({
+    '@media (max-width: 400px)': {
+        display: 'grid',
+    }
+})
+
 const HeaderApp: FC = () => {
     const { loginStatus } = useTypedSelector(state => state.login)
     
@@ -19,10 +25,10 @@ const HeaderApp: FC = () => {
         <header className="App-header">
             <ContainerApp>
                 <LinksWrapper>
-                    <div>
+                    <PublicWrapper>
                         <Link to='/'>О компании</Link>
                         <Link to='/products'>Товары</Link>
-                    </div>
+                    </PublicWrapper>
                     {loginStatus ? <PrivateComponents/> : <PublicComponents/>}
                 </LinksWrapper>
             </ContainerApp>
