@@ -34,7 +34,7 @@ const ProductItem: FC<IProductItem> = ({img, product}) => {
     
     return (
         <div className={cl.ProductItemWrapper}>
-            <img src={img} alt="" />
+            <img src={product.img} alt="" />
             <div className={cl.ProductNameWrapper}>
                 <span>{product.name}</span>
             </div>
