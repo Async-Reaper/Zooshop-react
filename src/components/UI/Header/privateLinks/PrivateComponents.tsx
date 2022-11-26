@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import styled from '@emotion/styled';
 import ButtonsPrivateHeader from './ButtonsPrivateHeader';
-import Cart from '../../Cart/Cart';
+import Cart from '../../../Cart/Cart';
 
 const IconWrapper = styled('div')({
     display: 'flex',

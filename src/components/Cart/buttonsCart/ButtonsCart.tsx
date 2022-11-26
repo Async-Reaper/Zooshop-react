@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
 import { Button } from '@mui/material'
 import { FC, useMemo, useState } from 'react'
-import { useTypedDispatch } from '../../hooks/useTypedDispatch'
-import { ICart } from '../../models/ICart'
-import { clearCart } from '../../store/reducers/cartSlice'
-import { setStateCartSuccessBuy } from '../../store/reducers/modalWindowsSlice'
+import { useTypedDispatch } from '../../../hooks/useTypedDispatch'
+import { ICart } from '../../../models/ICart'
+import { clearCart } from '../../../store/reducers/cartSlice'
+import { setStateCartSuccessBuy } from '../../../store/reducers/modalWindowsSlice'
 
 const ButtonsWrapper = styled('div')({
     display: 'flex',

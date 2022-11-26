@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react'
-import { useTypedDispatch } from '../../hooks/useTypedDispatch'
-import { useTypedSelector } from '../../hooks/useTypedSelector'
+import React, {useEffect} from 'react'
+import {useTypedDispatch} from '../../hooks/useTypedDispatch'
+import {useTypedSelector} from '../../hooks/useTypedSelector'
 import getAllProducts from '../../services/ProductsService'
 import ContainerApp from '../UI/Container/Container'
-import img from '../../img/Игрушка для кошек.jpg'
 import styled from '@emotion/styled'
 import ProductItem from './ProductItem'
-import { Skeleton } from '@mui/material'
+import {Skeleton} from '@mui/material'
+import Loader from "../UI/Loader/Loader";
 
 const ProductWrapper = styled('div')({
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr',
     gridTemplateRows: '1fr',
-    gridAutoflow: 'row',
+    gridAutoFlow: 'row',
     gridGap: '20px',
     marginBottom: 20,
     '@media (max-width: 840px)': {
@@ -33,10 +33,10 @@ const ProductsList = () => {
 
     return (
         <ContainerApp>
-            {loading &&  <Skeleton variant="rectangular" width={250} height={416} />}
+            {loading && <Loader/>}
             <ProductWrapper>
-                {products && products.map((product) => 
-                    <ProductItem key={product.id} img={img} product={product} />
+                {products && products.map((product) =>
+                    <ProductItem key={product.id} product={product}/>
                 )}
             </ProductWrapper>
         </ContainerApp>

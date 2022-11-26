@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
-import React, { FC } from 'react'
+import React, {FC, useEffect} from 'react'
 import { Link } from 'react-router-dom'
-import { useTypedSelector } from '../../../hooks/useTypedSelector'
-import ContainerApp from '../Container/Container'
-import PrivateComponents from './PrivateComponents'
-import PublicComponents from './PublicComponents'
+import { useTypedSelector } from '../../../../hooks/useTypedSelector'
+import ContainerApp from '../../Container/Container'
+import PrivateComponents from '../privateLinks/PrivateComponents'
+import PublicComponents from '../publicLinks/PublicComponents'
 
 const LinksWrapper = styled('div')({
     display: 'flex',
@@ -19,8 +19,12 @@ const PublicWrapper = styled('div')({
 })
 
 const HeaderApp: FC = () => {
-    const { loginStatus } = useTypedSelector(state => state.login)
-    
+    const { loginStatus } = useTypedSelector(state => state.login);
+    const { cart } = useTypedSelector(state => state.cart);
+    useEffect(() => {
+
+    },[loginStatus])
+    if (!localStorage.getItem('cart')) localStorage.setItem('cart', JSON.stringify(cart))
     return (
         <header className="App-header">
             <ContainerApp>

@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
-import InfoWrapper from '../components/Info/InfoWrapper'
-import ContainerApp from '../components/UI/Container/Container'
+import InfoWrapper from '../../components/Info/InfoWrapper'
+import ContainerApp from '../../components/UI/Container/Container'
 
 const InfoCompany: FC = () => {
   return (

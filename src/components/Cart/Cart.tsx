@@ -3,7 +3,7 @@ import { useTypedDispatch } from '../../hooks/useTypedDispatch'
 import { useTypedSelector } from '../../hooks/useTypedSelector'
 import { setStateCartModal } from '../../store/reducers/modalWindowsSlice'
 import ModalWindow from '../UI/ModalWindow/ModalWindow'
-import ButtonsCart from './ButtonsCart'
+import ButtonsCart from './buttonsCart/ButtonsCart'
 import CartSuccessBuy from './CartTable/CartSuccessBuy'
 import CartTable from './CartTable/CartTable'
 

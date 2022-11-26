@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import InfoCompany from '../pages/InfoCompany'
-import Products from '../pages/Products'
+import InfoCompany from '../pages/infoCompany/InfoCompany'
+import Products from '../pages/productsPage/Products'
 
 const PrivateRoute: FC = () => {
   return (

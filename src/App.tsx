@@ -1,17 +1,15 @@
-import { BrowserRouter } from 'react-router-dom';
 import './App.scss';
-import AppRouter from './components/AppRouter';
-import HeaderApp from './components/UI/Header/HeaderApp';
+import AppRouter from './components/appRouter/AppRouter';
+import HeaderApp from './components/UI/Header/headerApp/HeaderApp';
 
 function App() {
-  return (
-    <BrowserRouter>
-      <div className="App">
-        <HeaderApp/>
-        <AppRouter/>
-      </div>
-    </BrowserRouter>
-  );
+
+    return (
+        <div className="App">
+            <HeaderApp/>
+            <AppRouter/>
+        </div>
+    );
 }
 
 export default App;

@@ -6,10 +6,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { useTypedDispatch } from '../../../hooks/useTypedDispatch';
 import { closePopup } from '../../../store/reducers/signupSlice';
-
-interface IPopupProps {
-    children: string
-}
+import {IPopupProps} from "./Popup.types";
 
 const Popup: FC<IPopupProps> = ({children}) => {
     const { popupStatus } = useTypedSelector(state => state.signup)

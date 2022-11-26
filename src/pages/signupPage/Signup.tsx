@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import React, { FC } from 'react'
-import SignupForm from '../components/Forms/SignupForm'
+import SignupForm from '../../components/Forms/SignupForm'
 
 const SignupWrapper = styled('div')({
   display: 'flex',

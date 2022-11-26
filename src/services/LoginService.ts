@@ -21,7 +21,7 @@ export const LoginService = (data: IUserLogin) => {
                 });
             
         } catch (error) {
-            
+            console.log(error)
         }
     }
 }

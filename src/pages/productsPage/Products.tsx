@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import ProductsList from '../components/Product/ProductsList'
+import ProductsList from '../../components/Product/ProductsList'
 
 const Products: FC = () => {
     

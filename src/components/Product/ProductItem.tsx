@@ -1,22 +1,21 @@
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { Button } from '@mui/material';
 import React, { FC } from 'react';
-import { useTypedDispatch } from '../../hooks/useTypedDispatch';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { ICart } from '../../models/ICart';
-import { IProduct } from '../../models/IProduct';
-import { addToCart } from '../../store/reducers/cartSlice';
 import { setCountProduct } from '../../utils/setCountProduct';
 import DisabledButton from './DisabledButton';
 import cl from './ProductItem.module.scss';
+import { IProduct } from "../../models/IProduct";
+import { useTypedDispatch } from "../../hooks/useTypedDispatch";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { ICart } from "../../models/ICart";
+import { addToCart } from "../../store/reducers/cartSlice";
 
 interface IProductItem {
     product: IProduct
-    img: string
 }
 
 
-const ProductItem: FC<IProductItem> = ({img, product}) => {
+const ProductItem: FC<IProductItem> = ({product}) => {
     const dispatch = useTypedDispatch()
     const { cart } = useTypedSelector(state => state.cart)
     const { loginStatus } = useTypedSelector(state => state.login)
